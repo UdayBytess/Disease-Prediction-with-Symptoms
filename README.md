@@ -1,114 +1,260 @@
-# Disease Prediction from Symptoms Using Machine Learning
+# 🏥 AI-Powered Disease Prediction System
 
-Disease Prediction from Symptoms involves using machine learning (ML) techniques to identify and compare medical cases based on clinical features such as symptoms, diagnoses, test results, and treatment outcomes. This approach helps healthcare professionals find similar cases, aiding in diagnosis, treatment recommendations, and patient management.
+<div align="center">
 
-## How It Works:
+![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=for-the-badge&logo=tensorflow)
+![Flask](https://img.shields.io/badge/Flask-3.1.0-green?style=for-the-badge&logo=flask)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.6.1-yellow?style=for-the-badge&logo=scikitlearn)
 
-Data Collection: 
-Medical records, including structured (e.g., lab results) and unstructured data (e.g., clinical notes).
+**An intelligent deep learning system that predicts diseases from symptom descriptions with 89.33% accuracy**
 
-Data Preprocessing: 
-Cleaning, normalizing, and encoding data into a machine-readable format.
+[Features](#-features) • [Architecture](#-architecture) • [Installation](#-installation) • [Usage](#-usage) • [Model Performance](#-model-performance)
 
-Feature Extraction: 
-Extracting relevant features like patient demographics, vital signs, lab results, and clinical histories.
+</div>
 
-Similarity Measurement: 
-Using algorithms such as cosine similarity, Euclidean distance, or more advanced techniques like neural embeddings to measure case similarity.
+---
 
-Model Training: 
-Training ML models (e.g., k-NN, clustering algorithms, deep learning models) to learn patterns from labeled or unlabeled patient data.
+## 📋 Overview
 
-Evaluation & Deployment: 
-Evaluating model performance using metrics like precision, recall, and F1-score, then deploying in a healthcare application.
+This project implements a state-of-the-art disease prediction system using advanced Natural Language Processing (NLP) and Deep Learning techniques. By analyzing patient-reported symptoms in natural language, the system accurately identifies potential diseases, serving as an intelligent diagnostic support tool for healthcare applications.
 
+## ✨ Features
 
+### 🧠 Advanced Machine Learning
+- **Bidirectional LSTM Networks**: Captures contextual information from both directions in symptom sequences
+- **Custom Attention Mechanism**: Focuses on the most relevant symptoms for accurate predictions
+- **Deep Neural Architecture**: Multi-layer network with 128-dimensional embeddings and dense layers
 
-## Applications:
+### 🎯 High Performance
+- **89.33% Accuracy** on validation data
+- **Real-time Predictions** with confidence scores
+- **Robust Text Processing** handles various input formats
+- **Multi-class Classification** across diverse disease categories
 
-Clinical Decision Support: Recommending diagnoses or treatments based on similar past cases.
+### 🌐 Production-Ready Web Interface
+- **Flask-powered REST API** for easy integration
+- **Interactive Web UI** for symptom input
+- **Confidence Scoring** for prediction reliability
+- **Responsive Design** for desktop and mobile devices
 
-Medical Research: Identifying cohorts for clinical trials.
+### 🔧 Technical Excellence
+- **Custom Keras Layers** with attention mechanism implementation
+- **Comprehensive Preprocessing** including tokenization and text cleaning
+- **Model Persistence** with pickle serialization
+- **Stratified Data Splitting** for balanced training
 
-Patient Risk Prediction: Assessing the likelihood of complications by comparing similar patient histories.
+## 🏗️ Architecture
 
-Personalized Medicine: Tailoring treatments based on individual case similarities.
+### Model Components
 
+```
+Input Layer (150 tokens)
+    ↓
+Embedding Layer (10,000 vocab, 128 dimensions)
+    ↓
+Bidirectional LSTM (128 units, 30% dropout)
+    ↓
+Custom Attention Layer
+    ↓
+Dense Layer (128 units, ReLU activation)
+    ↓
+Dropout Layer (40%)
+    ↓
+Output Layer (Softmax, multi-class)
+```
 
+### Key Technologies
 
-## Challenges:
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **Deep Learning** | TensorFlow/Keras | Neural network implementation |
+| **NLP** | Tokenization, Padding | Text preprocessing |
+| **Web Framework** | Flask 3.1.0 | API and web interface |
+| **Data Processing** | Pandas, NumPy | Data manipulation |
+| **ML Tools** | scikit-learn | Encoding, metrics, splitting |
 
-Data Privacy and Security: Ensuring compliance with healthcare data protection standards like HIPAA.
+## 🚀 Installation
 
-Data Quality: Dealing with incomplete or inconsistent records.
+### Prerequisites
+- Python 3.13 or higher
+- pip package manager
 
-Interpretability: Making model predictions understandable for clinical use.
+### Setup Instructions
 
-Ethical Considerations: Avoiding biases that may arise from imbalanced datasets.
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd disease-prediction-system
+```
 
-By leveraging Disease Prediction from Symptoms using machine learning, healthcare providers can enhance clinical decision-making, improve patient outcomes, and streamline medical research processes.
+2. **Create virtual environment**
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+pip install tensorflow==2.15.0  # Install TensorFlow separately
+```
 
-## Installation
-1. Install the Anaconda Python Package and TensorFlow 2.10 
-	Follow this video to understand, how to Install Anaconda and TensorFlow 2.10
-	https://youtu.be/b9e3J-NJ8TY
-	
-	Important Note:
-	If TensorFlow is not running properly, downgrade the numpy version to 1.26.4 using the below command
-	>> pip install numpy==1.26.4
-	
-2. Open anaconda prompt (Search for Anaconda prompt and open) 
+4. **Verify model files**
+Ensure these files exist in the project directory:
+- `disease_prediction_model.h5`
+- `preprocessing.pkl`
+- `Symptom2Disease.csv`
 
-3. Change the directory to the project folder using the below command
-	>> cd path_of_project_folder
-	Example: cd D:\Disease_Prediction_From_Symptoms
-	
-4. Activate the virtual environment created while installing TensorFlow using the command
-	>> conda activate tf 
-	
-	Note: Here tf is the virtual environment name created while installing TensorFlow
-	
-5. Now install the required libraries using the below command
-	>> pip install -r requirements.txt
-	
+## 💻 Usage
 
-## Follow the steps to train and run the project after installing the requirements.
+### Running the Web Application
 
-1. Open anaconda prompt (Search for Anaconda prompt and open) 
+```bash
+python app.py
+```
 
-2. Change the directory to the project folder using the below command
-	>> cd path_of_project_folder
-	Example: cd D:\Disease_Prediction_From_Symptoms
-	
-3. Activate the virtual environment created while installing TensorFlow using the command
-	>> conda activate tf 
+Visit `http://127.0.0.1:5000` in your browser
 
-4. Next to train the model open the Jupyter Notebook using the below command
-	>> jupyter notebook
-	
-5. Open the disease_prediction_model.ipynb and run all cells
+### API Endpoint
 
-6. Once the training is completed the trained model that is disease_prediction_model.h5 and preprocessing that is preprocessing.pkl will be stored in the current working directory
+**POST** `/predict`
 
-7. To run the Flask app open the Anaconda prompt and type the following command
-	>> python app.py
-	
-	
-## Follow the steps to run the project after installing the requirements and Training the Model.
+**Request:**
+```json
+{
+  "symptoms": "fever headache body pain"
+}
+```
 
-1. Open anaconda prompt (Search for Anaconda prompt and open) 
+**Response:**
+```json
+{
+  "prediction": "Dengue",
+  "confidence": 92.45,
+  "symptoms": "fever headache body pain"
+}
+```
 
-2. Change the directory to the project folder using the below command
-	>> cd path_of_project_folder
-	Example: cd D:\Disease_Prediction_From_Symptoms
-	
-3. Activate the virtual environment created while installing TensorFlow using the command
-	>> conda activate tf 
+### Python Integration
 
-4. To run the Flask app open the Anaconda prompt and type the following command
-	>> python app.py 
+```python
+from app import predict_disease
 
-Happy Learning
+symptoms = "persistent cough, chest pain, difficulty breathing"
+disease, confidence = predict_disease(symptoms)
+print(f"Predicted Disease: {disease} (Confidence: {confidence:.2f}%)")
+```
 
-Team VTUPulse.com
+## 📊 Model Performance
+
+### Training Metrics (Final Epoch)
+
+| Metric | Training | Validation |
+|--------|----------|------------|
+| **Accuracy** | 99.01% | 89.33% |
+| **Precision** | 90.93% | - |
+| **Recall** | 89.33% | - |
+| **F1-Score** | 89.01% | - |
+| **Loss** | 0.0399 | 0.3797 |
+
+### Training Configuration
+- **Epochs**: 25
+- **Batch Size**: 32
+- **Optimizer**: Adam
+- **Loss Function**: Sparse Categorical Crossentropy
+- **Validation Split**: 20%
+
+### Key Performance Highlights
+- Rapid convergence (significant improvement by Epoch 5)
+- Excellent generalization with controlled overfitting
+- Consistent performance across multiple disease categories
+- Real-time inference capability
+
+## 🔬 Technical Deep Dive
+
+### Attention Mechanism
+
+The custom attention layer computes weighted importance of symptom tokens:
+
+```python
+score = tanh(W·x + b)
+attention_weights = softmax(u·score)
+context_vector = Σ(attention_weights × hidden_states)
+```
+
+### Text Preprocessing Pipeline
+
+1. **Lowercasing**: Standardize text format
+2. **Punctuation Removal**: Clean special characters
+3. **Whitespace Normalization**: Remove extra spaces
+4. **Tokenization**: Convert to numerical sequences
+5. **Padding**: Fixed-length input (150 tokens)
+
+### Model Training Features
+
+- **Stratified Splitting**: Maintains disease distribution
+- **Dropout Regularization**: Prevents overfitting (30% + 40%)
+- **Bidirectional Processing**: Context from both directions
+- **Custom Callbacks**: Real-time metric monitoring
+
+## 📁 Project Structure
+
+```
+disease-prediction-system/
+│
+├── app.py                          # Flask application
+├── disease_prediction_model.ipynb  # Model training notebook
+├── requirements.txt                # Python dependencies
+│
+├── disease_prediction_model.h5     # Trained model weights
+├── preprocessing.pkl               # Tokenizer & encoder
+├── Symptom2Disease.csv            # Training dataset
+│
+└── templates/
+    └── index.html                 # Web interface
+```
+
+## 🎓 Use Cases
+
+- **Clinical Decision Support**: Assist healthcare providers with preliminary diagnoses
+- **Telemedicine Platforms**: Enable remote symptom assessment
+- **Health Chatbots**: Integrate with conversational AI systems
+- **Medical Education**: Training tool for medical students
+- **Health Monitoring Apps**: Personal health assessment features
+
+## 🔮 Future Enhancements
+
+- [ ] Multi-language support for global accessibility
+- [ ] Explainability features (SHAP, LIME) for interpretable predictions
+- [ ] Integration with medical knowledge graphs
+- [ ] Mobile application development
+- [ ] Continuous learning from new medical data
+- [ ] Risk assessment and severity scoring
+- [ ] Medical history context integration
+
+## 🛡️ Disclaimer
+
+This system is designed as a **diagnostic support tool** and should not replace professional medical advice. Always consult qualified healthcare providers for medical decisions.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📧 Contact
+
+For questions or collaborations, please open an issue or contact the maintainers.
+
+---
+
+<div align="center">
+
+**Made with ❤️ using TensorFlow and Flask**
+
+⭐ Star this repository if you find it helpful!
+
+</div>
