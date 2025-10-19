@@ -84,7 +84,7 @@ Output Layer (Softmax, multi-class)
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
+git clone https://github.com/UdayBytess/Disease-Prediction-with-Symptoms
 cd disease-prediction-system
 ```
 
